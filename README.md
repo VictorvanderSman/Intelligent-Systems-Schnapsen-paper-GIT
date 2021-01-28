@@ -1,8 +1,12 @@
-Intelligent Systems 2020 and Project Artificial Intelligence 2020
+Intelligent Systems 2021 and Project Artificial Intelligence 2021
 =================================================================
 
-This is the practical material for the Intelligent Systems course and the Project AI, based on the
-card based strategy game _Schnapsen_.
+This is the practical material for the paper for Intelligent Systems 2021. It contains all files used to create the bots that are used 
+in the research paper from which the link to this page was provided. To understand all the files in this repository an introduction 
+provided by the Intelligent Systems staff is still in this README file. The staff made the framework available to make the models and datasets
+for the machine learning bots. They deserve credit for most of the work in this repository. 
+
+
 
 ## Getting started
 
@@ -202,59 +206,3 @@ opponent = util.other(me)
 own_points = state.get_points(me)
 opponents_points = state.get_points(opponent)
 ```
-
-### Get familiar with the State API
-
-Every state-related function you will use when building your bot can be found, fully documented, in the State class,
- located in api/_state.py. We *highly recommend* that you read through this class to understand the capabilities available to you when writing your bots.
-
-Note that you only have access to public functions. Private functions, i.e. functions whose name starts with two underscores "__" 
-are used for the internal implementation of the game and are abstracted away from the player.
-
-Reading the code itself in addition to the documentation can help you get acquainted with the internals of the game engine,
- however this is not obligatory in order to be able to complete the course.
-
-## FAQ
-
-### I found a bit that could be implemented much better/more efficiently.
-
-Our main goal was to write code that was easy to read and to understand. To achieve
-this, we've made many methods less efficient than they need to be. This
-is especially important for a project like this where many of the students are
-novice programmers. It is also a
-[good principle](https://en.wikipedia.org/wiki/Program_optimization#When_to_optimize)
-in general, at least when you write the first version of your code.
-
-You may feel that your bot is too slow with our State objects, for
-instance if you're creating an evaluating lots of State objects in a deep
-tree. Luckily, you're not tied to our API: simply take the State object
-you're given and copy it to your own, more efficient, implementation. This may
-get you another plie or two in the search tree, so if you really want to win the
-competition it might be worth it.  
-
-### I found a bug/improvement. Can I fork the project and send a pull request?
-
-Sure! Just remember this is not a regular project: we've tried to minimize the
-amount of advanced python, and the number of dependencies. So, it might be that
-we're aware of the potential improvement, but we haven't used it just to keep the
-code simple for novice programmers.  
-
-### The command-line scripts (play.py, tournament.py) make it difficult to do X
-
-The command line scripts provide a convenient starting point, but if you want to do
-something more complex (like try a range of parameters for your bot), they are probably
-too limited.
-
-Your best bet is to write your own script that does what you want, and have it call the
-engine. Have a look at the function play(...) in  api/engine.py, or have it run a by
-itself. See experiment.py for an example.
-
-## Changes from last year's challenge
-
-Bots from last year can be used this year as well.
-
-## Attributions
-
-Vectorized Playing Card Graphics 2.0 - http://sourceforge.net/projects/vector-cards/  
-Copyright 2015 - Chris Aguilar - conjurenation@gmail.com  
-Licensed under LGPL 3 - www.gnu.org/copyleft/lesser.html
