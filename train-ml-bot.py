@@ -19,11 +19,22 @@ from sklearn.neural_network import MLPClassifier
 import joblib
 
 from bots.rand import rand
-# from bots.rdeep import rdeep
+from bots.rdeep import rdeep
 
 from bots.ml.ml import features
+from bots.ml import ml
 
-def create_dataset(path, player=rand.Bot(), games=2000, phase=1):
+pather = os.path.dirname(os.path.realpath(__file__)) 
+
+# Players to create dataset
+player1 = ml.Bot(model_file= pather + '/bots/ml/rand_model.pkl')
+player2 = ml.Bot(model_file= pather + '/bots/ml/rdeep_model.pkl')
+
+# Name of the model you want to train and datasset to use
+dataset = "rdeep"
+model_name = "logistic_model"
+
+def create_dataset(path, player1=rand.Bot(), player2 = rand.Bot(), games=2000, phase=1):
     """Create a dataset that can be used for training the ML bot model.
     The dataset is created by having the player (bot) play games against itself.
     The games parameter indicates how many games will be started.
@@ -69,7 +80,10 @@ def create_dataset(path, player=rand.Bot(), games=2000, phase=1):
             state_vectors.append(features(given_state))
 
             # Advance to the next state
-            move = player.get_move(given_state)
+            if state.whose_turn() == 1:
+                move = player1.get_move(given_state)
+            else:
+                move = player2.get_move(given_state)
             state = state.next(move)
 
         winner, score = state.winner()
@@ -97,15 +111,17 @@ def create_dataset(path, player=rand.Bot(), games=2000, phase=1):
 ## Parse the command line options
 parser = ArgumentParser()
 
+# What bot is used to create the dataset
+
 parser.add_argument("-d", "--dset-path",
                     dest="dset_path",
                     help="Optional dataset path",
-                    default="dataset.pkl")
+                    default= dataset + "_dataset.pkl")
 
 parser.add_argument("-m", "--model-path",
                     dest="model_path",
                     help="Optional model path. Note that this path starts in bots/ml/ instead of the base folder, like dset_path above.",
-                    default="model.pkl")
+                    default= model_name +"_model.pkl")
 
 parser.add_argument("-o", "--overwrite",
                     dest="overwrite",
@@ -121,9 +137,10 @@ parser.add_argument("--no-train",
 options = parser.parse_args()
 
 if options.overwrite or not os.path.isfile(options.dset_path):
-    create_dataset(options.dset_path, player=rand.Bot(), games=10000)
+    create_dataset(options.dset_path, player1=player1, player2=player2, games=10000)
 
 if options.train:
+
 
     # Play around with the model parameters below
 
@@ -151,8 +168,8 @@ if options.train:
         data, target = pickle.load(output)
 
     # Train a neural network
-    learner = MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, learning_rate_init=learning_rate, alpha=regularization_strength, verbose=True, early_stopping=True, n_iter_no_change=6)
-    # learner = sklearn.linear_model.LogisticRegression()
+    # learner = MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, learning_rate_init=learning_rate, alpha=regularization_strength, verbose=True, early_stopping=True, n_iter_no_change=6)
+    learner = sklearn.linear_model.LogisticRegression()
 
     model = learner.fit(data, target)
 

@@ -41,7 +41,8 @@ def run_tournament(options):
 
             if winner is not None:
                 winner = p[winner - 1]
-                wins[winner] += score
+                wins[winner] += 1
+                
 
             playedgames += 1
             print('Played {} out of {:.0f} games ({:.0f}%): {} \r'.format(playedgames, totalgames, playedgames/float(totalgames) * 100, wins))
@@ -64,12 +65,12 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--players",
                         dest="players",
                         help="Comma-separated list of player names (enclose with quotes).",
-                        default="rand,bully,rdeep")
+                        default="rand,rdeep")
 
     parser.add_argument("-r", "--repeats",
                         dest="repeats",
                         help="How many matches to play for each pair of bots",
-                        type=int, default=10)
+                        type=int, default=10000)
 
     parser.add_argument("-t", "--max-time",
                         dest="max_time",

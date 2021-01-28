@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jan 26 14:59:04 2021
+
+@author: 13vic
+"""
 #!/usr/bin/env python
 """
 A basic adaptive bot. This is part of the third worksheet.
@@ -12,9 +18,9 @@ import joblib
 
 # Path of the model we will use. If you make a model
 # with a different name, point this line to its path.
-MODEL = "/rdeep_model.pkl"
+MODEL = "/logistic_model.pkl"
 DEFAULT_MODEL = os.path.dirname(os.path.realpath(__file__)) + MODEL
-LOSING = False # if set to true the model will try to lose 
+LOSING = True # if set to true the model will try to lose 
 
 class Bot:
 

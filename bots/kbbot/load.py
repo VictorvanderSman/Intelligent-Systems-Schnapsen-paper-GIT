@@ -42,6 +42,11 @@ PJ16 = Boolean('pj16')
 PJ17 = Boolean('pj17')
 PJ18 = Boolean('pj18')
 PJ19 = Boolean('pj19')
+C0 = Boolean("p0")
+C1 = Boolean("p1")
+C2 = Boolean("p2")
+C3 = Boolean("p3")
+C4 = Boolean("p4")
 
 def general_information(kb):
     # GENERAL INFORMATION ABOUT THE CARDS
@@ -50,6 +55,12 @@ def general_information(kb):
     kb.add_clause(J9)
     kb.add_clause(J14)
     kb.add_clause(J19)
+    kb.add_clause(C0)
+    kb.add_clause(C1)
+    kb.add_clause(C2)
+    kb.add_clause(C3)
+    kb.add_clause(C4)
+
     # Add here whatever is needed for your strategy.
 
 def strategy_knowledge(kb):

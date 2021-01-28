@@ -29,19 +29,23 @@ You require a working Python 3.x environment and a good text editor or an IDE. Y
 
 For the regular Windows Python installation, be sure to select the _"Add Python 3.x to PATH"_ option in the installation dialogue, so that you can access Python through your command line.
 
-For more advanced Windows users that want to use the Linux bash without a virtual machine or dual-booting, consider using [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10). Once set up, this lets you use the command line interface of the respective Linux distribution you chose, with access to the Windows File System. For Linux newcomers, we suggest using Ubuntu. You can then install Python3 and pip through the following command, in case they are not pre-installed. For other distributions, use the equivalent package manager.
+For more advanced Windows users that want to use the Linux bash without a virtual machine or dual-booting, consider using [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10). 
+Once set up, this lets you use the command line interface of the respective Linux distribution you chose, with access to the Windows File System. For Linux newcomers, we suggest using Ubuntu.
+You can then install Python3 and pip through the following command, in case they are not pre-installed. For other distributions, use the equivalent package manager.
 
 ```bash
 sudo apt install python3 python3-pip
 ```
 
-The core game engine runs on pure Python, however you will need to install a few additional packages for tasks throughout the course. This is most easily done through the standard Python package manager, pip. You will most likely already have pip after the Python 3.x installation. You can check by running the following command in your command line interface.
+The core game engine runs on pure Python, however you will need to install a few additional packages for tasks throughout the course. This is most
+easily done through the standard Python package manager, pip. You will most likely already have pip after the Python 3.x installation. You can check by running the following command in your command line interface.
 
 ```bash
 pip -V
 ```
 
-If this fails, you can find installation instructions [here](https://pip.pypa.io/en/stable/installing/). Once installed, pip can be accessed from the command line interface, and the required packages can be obtained through the following command:
+If this fails, you can find installation instructions [here](https://pip.pypa.io/en/stable/installing/). Once installed, pip can be accessed from
+ the command line interface, and the required packages can be obtained through the following command:
 
 ```bash
 pip install sklearn matplotlib flask
@@ -201,11 +205,14 @@ opponents_points = state.get_points(opponent)
 
 ### Get familiar with the State API
 
-Every state-related function you will use when building your bot can be found, fully documented, in the State class, located in api/_state.py. We *highly recommend* that you read through this class to understand the capabilities available to you when writing your bots.
+Every state-related function you will use when building your bot can be found, fully documented, in the State class,
+ located in api/_state.py. We *highly recommend* that you read through this class to understand the capabilities available to you when writing your bots.
 
-Note that you only have access to public functions. Private functions, i.e. functions whose name starts with two underscores "__" are used for the internal implementation of the game and are abstracted away from the player.
+Note that you only have access to public functions. Private functions, i.e. functions whose name starts with two underscores "__" 
+are used for the internal implementation of the game and are abstracted away from the player.
 
-Reading the code itself in addition to the documentation can help you get acquainted with the internals of the game engine, however this is not obligatory in order to be able to complete the course.
+Reading the code itself in addition to the documentation can help you get acquainted with the internals of the game engine,
+ however this is not obligatory in order to be able to complete the course.
 
 ## FAQ
 

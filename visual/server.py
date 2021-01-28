@@ -76,7 +76,7 @@ if __name__ == '__main__':
 	parser.add_argument("-o", "--opponent",
 						dest="player2",
 						help="the bot to run as your opponent (default: rand)",
-						default="rand")
+						default="bully")
 
 	parser.add_argument("-s", "--seed",
 						dest="seed",
